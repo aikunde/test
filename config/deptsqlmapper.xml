@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="ns">
+  	<select id="getDeptByDeptno"  resultType="Dept" parameterType="java.lang.String">
+  		select * from dept where deptno=#{deptno}
+  	</select>
+  	<select id="getDepts" resultType="org.lanqiao.entity.Dept">
+  		select * from dept
+  	</select>
+  	<select id="getCount" resultType="int">
+  		select count(*) from dept
+  	</select>
+  	<select id="getDeptByDeptName"  resultType="org.lanqiao.entity.Dept" parameterType="java.lang.String">
+  		select * from dept where dname like '%${value}%'
+  	</select>
+  	<insert id="addUser" parameterType="org.lanqiao.entity.Dept">
+  		insert into dept(deptno,dname,loc) values(#{deptno},#{dname},#{loc})
+  	</insert>
+  	<delete id="removeUser" parameterType="int" >
+  		delete from dept where deptno=#{deptno}
+  	</delete>
+  	<update id="updateUser" parameterType="org.lanqiao.entity.Dept">
+        update dept set dname=#{dname} where deptno=#{deptno}
+    </update>
+  </mapper>
